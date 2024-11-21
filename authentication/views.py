@@ -24,6 +24,8 @@ def login_view(request):
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             user = authenticate(username=username, password=password)
+
+            print(user.role)
             if user is not None:
                 login(request, user)
                 return redirect("/")
@@ -32,7 +34,7 @@ def login_view(request):
         else:
             msg = 'Error validating the form'    
 
-    return render(request, "accounts/login.html", {"form": form, "msg" : msg})
+    return render(request, "authentication/login.html", {"form": form, "msg" : msg})
 
 def register_user(request):
 
@@ -58,8 +60,6 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg" : msg, "success" : success })
-
-
 
 
 def logout_view(request):
