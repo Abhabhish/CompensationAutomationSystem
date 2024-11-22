@@ -21,9 +21,9 @@ def create_proposal(request):
             proposal = form.save(commit=False)
             proposal.user = request.user  # Set current user
             proposal.save()
-            return redirect('edit_proposal', proposal_id=proposal.id, section='details')
+            return redirect('edit_proposal', proposal_id=proposal.id, section='proposal')
     else:
-        form = SupplierDocumentsForm()
+        form = ProposalForm()
     return render(request, "proposals/create_proposal.html", {'form': form})
 
 # Edit a specific section of the proposal

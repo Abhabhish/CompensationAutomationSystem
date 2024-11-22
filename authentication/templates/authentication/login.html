@@ -21,16 +21,18 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">
                                     <a target="_blank"
-                                       href="https://appseed.us/admin-dashboards/django-dashboard-volt">Django Volt</a> - Sign IN
+                                       href="/">Compensation Automation System</a> - Sign IN
+
+                                    {#                                       href="https://appseed.us/admin-dashboards/django-dashboard-volt">Django Volt</a> - Sign IN#}
                                 </h1>
                                 <br />
-                                <p>
-                                    {% if msg %}
-                                        {{ msg | safe }}
-                                    {% else %}
-                                        Add your credentials
-                                    {% endif %}                                     
-                                </p>    
+{#                                <p>#}
+{#                                    {% if msg %}#}
+{#                                        {{ msg | safe }}#}
+{#                                    {% else %}#}
+{#                                        Add your credentials#}
+{#                                    {% endif %}                                     #}
+{#                                </p>    #}
                             </div>
 
                             <form method="post" action="" class="mt-4">
@@ -74,10 +76,8 @@
                             </form>
 
                             <div class="d-flex justify-content-center align-items-center mt-4">
-                                <span class="font-weight-normal">
-                                    &copy; <a  href="https://themesberg.com" target="_blank">Themesberg</a> 
-                                    - coded by <a target="_blank" href="https://appseed.us">AppSeed</a>
-                                </span>
+                                <a href="{% url 'forget_password' %}" class="small">Username | Forgot password ?</a>
+
                             </div>
 
                         </div>

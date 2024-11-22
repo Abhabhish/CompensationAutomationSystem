@@ -1,8 +1,3 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
@@ -159,3 +154,20 @@ class TransactionView(View):
         if not is_urlencode:
             messages.warning(request, 'Error Occurred. Please try again.')
         return False, 'Error Occurred. Please try again.'
+
+@login_required(login_url="/login/")
+
+def dashboard(request):
+    context = {
+        'segment': 'dashboard'
+    }
+    return render(request, './dashboard.html', context)
+
+@login_required(login_url="/login/")
+def settings(request):
+    context = {
+        'segment': 'settings'
+    }
+    return render(request, './settings.html', context)
+
+
