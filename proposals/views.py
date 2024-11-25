@@ -72,3 +72,18 @@ def submit_proposal(request, proposal_id):
     proposal.submitted = True
     proposal.save()
     return JsonResponse({"status": "success", "message": "Proposal submitted successfully"})
+
+
+
+@login_required
+def proposal_list(request):
+    proposals = Proposal.objects.filter(user=request.user).order_by('-created_at')
+
+    context = {
+        'proposals': proposals,
+        'draft_count': proposals.filter(status='Draft').count(),
+        'submitted_count': proposals.filter(status='Submitted').count(),
+        'approved_count': proposals.filter(status='Approved').count(),
+    }
+
+    return render(request, 'core/index.html', context)
